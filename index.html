@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tip Calculator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing:  border-box;
+			font-family: 'Josefin Sans', sans-serif;
+		}
+		main {
+			height: 100vh;
+			background-image: linear-gradient(to right top, #5F9EA0, #7FFF00, #FF7F50, #6495ED, #00FFFF);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		div {
+			max-width: 500px;
+			height: auto;
+			background-color: #A9A9A9;
+			padding: 50px;
+			box-shadow: 1px 1px 15px 3px #2d3436;
+			opacity: 0.8;
+			filter: alpha(opacity=80);
+		}
+
+		h1{
+			margin-bottom: 10px;
+			text-shadow: 1px 2px 1px white;
+			text-transform: capitalize;
+		}
+		label {
+			display: block;
+			text-transform: capitalize;
+			margin-top: 30px;
+		}
+		input {
+			width: 400px;
+			padding: 10px 0;
+		}
+		input:hover {
+			background-color: white;
+    		color: black;
+		}
+		button{
+			border-radius: 10px;
+			padding: 15px 30px;
+			font-size: 0.8rem;
+			text-transform: uppercase;
+			border: none;
+			color: white;
+			background: #006894;
+			box-shadow: 1px 1px 5px 1px #2d3436;
+			margin-top: 20px;
+		}
+		button:hover {
+			background: #1E90FF;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+<main>
+	<div>
+		<center><h1>Tip Calculator</h1></center>
+		<label>Bill Amount</label>
+		<input type="text" name="bill_amount" id="bill_amount">
+		<br>
+		<label>Tip Percentage</label>
+		<input type="text" name="tip_perc" id="tip_perc">
+		<br>
+		<label>Tip Amount</label>
+		<input type="text" id="tip_total" disabled="">
+		<br>
+		<label>Total Billed</label>
+		<input type="text" id="total_billed" disabled="">
+		<br>
+		<button onclick="tipcal()">Calculate</button>
+		
+	</div>
+</main>
+<script>
+	function tipcal() {
+	 
+	var amount = document.getElementById('bill_amount').value;
+	var perc = document.getElementById('tip_perc').value;
+	var tip = amount * (perc/100);
+	// alert(tip);
+	var total = tip + Number(amount);
+	// alert(total);
+	document.getElementById('tip_total').value = tip;
+
+	document.getElementById('total_billed').value = total;
+
+	 } 
+	
+</script>
+</body>
+</html>
