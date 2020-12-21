@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Registration Page</title>
+<style>
+.input1[type=text],.input1[type=password],.input1[type=email] {
+	width: 100%;
+	padding: 10px 15px;
+	margin: 0px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 4px;
+	box-sizing: border-box;	
+}
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 22px;
+    cursor: pointer;
+}
+
+.button1{
+    background-color: white;
+    color: black;
+    height: 8%;
+    width: 30%;
+    padding: 18px 20px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.button1:hover {
+    background-color: black;
+    color: white;
+}
+.button2{
+    background-color: white;
+    color: black;
+    height: 8%;
+    width: 6%;
+    padding: 18px 20px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    text-decoration: none;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+.button2:hover {
+    background-color: black;
+    color: white;
+}
+
+div.ab {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    margin: 50px 500px; 
+    padding: 80px 50px;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    font-weight: bold;
+}
+body {
+    background-image:url("calc.jpg");
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+p {
+	line-height: 0.9;
+}
+h1 {
+	color: black;
+}
+</style>
+</head>
+<body>
+    <a href="login.html" class="button2">Login</a>
+<form action="login.html" onsubmit="return validate()" method="get">
+<div class="ab">
+<center><h2><b>GLOBAL TIP CALCULATOR</b></h2>
+<br>
+<h2>Register Your Details Here</h2></center>
+<br>
+Full name :<br>
+<input class="input1" type="text" name="fname" id="fname" placeholder="Enter your name" required>
+<br><br>
+Email ID :<br>
+<input class="input1"  type="email" name="emailid" id="emailid" placeholder="Enter your Email ID" required>
+<br><br>
+Username :<br>
+<input class="input1" type="text" name="uname" id="uname" placeholder="Enter your Username" required>
+<br><br>
+Password :<br>
+<input class="input1" type="password" name="pwd" id="pwd" placeholder="Enter your password" required>
+<br><br>
+Confirm Password : <br>
+<input class="input1"  type="password" name="rpwd" id="rpwd" placeholder="Confirm your password" required>
+<br><br>
+<input type="checkbox" name="terms" id="a"> I,hereby agree the terms and conditions of Global Tip Calculator.
+<br><br>
+<center>
+<input type="submit" value="Submit" class="button1">
+<input type="reset" value="Cancel" class="button1">
+</center>
+</div>
+</form>
+<script type="text/javascript">
+    function validate() {
+        var name = document.getElementById('fname').value;
+        var mail = document.getElementById('emailid').value;
+        var uname = document.getElementById('uname').value;
+        var pwd = document.getElementById('pwd').value;
+        var rpwd = document.getElementById('rpwd').value;
+        if (!(/^\S{3,}$/.test(name))) {
+            alert("Name cannot contain whitespace...");
+            return false;
+        }
+        else if (!(/^[a-zA-Z]+$/.test(name))) {
+            alert("Only alphabets are allowed...");
+            return false;
+        }
+        else if (!(/^\S{3,}$/.test(uname))) {
+            alert("Username cannot contain whitespace..."); 
+            return false;  
+        }
+        else if (pwd != rpwd) {
+            alert("Password and Confirm Password does not match...");
+            return false;
+        }
+        else if(!(document.getElementById('a').checked))
+        {
+            alert("Agree with terms and conditions...")
+        }
+        else {
+            return true;
+        }
+
+    }
+</script>
+
+</body>
+</html>

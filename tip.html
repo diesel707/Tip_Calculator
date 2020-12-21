@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tip Calculator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
+	<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing:  border-box;
+			font-family: 'Josefin Sans', sans-serif;
+		}
+		body {
+			background-image: url("tip2.jpg");
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: left; 
+		}
+		main {
+			height: 100vh;
+			/*background-image: url("tip2.jpg"); */
+			/*linear-gradient(to right top, #5F9EA0, #7FFF00, #FF7F50, #6495ED, #00FFFF);*/
+			/*background-size: cover;
+			background-repeat: no-repeat;
+			background-position: left;*/
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		div.abc {
+			width: auto;
+			height: auto;
+			background-color: #A9A9A9;
+			padding: 20px;
+			margin-left: 550px;
+			margin-bottom: 100px;
+			box-shadow: 1px 1px 15px 3px #2d3436;
+			opacity: 0.8;
+			filter: alpha(opacity=80);
+		}
+
+		h1{
+			margin-bottom: 10px;
+			text-shadow: 1px 2px 1px white;
+			text-transform: capitalize;
+		}
+		label {
+			display: block;
+			text-transform: capitalize;
+			margin-top: 30px;
+		}
+		input[type=text], input[type=number] {
+			width: 400px;
+			padding: 10px 0;
+			border-radius: 4px;
+		}
+		input[type=text]:hover, input[type=number]:hover {
+			background-color: white;
+    		color: black;
+		}
+		input[type=text]:focus,input[type=number]:focus {
+  			background-color: rgb(255, 228, 196);
+		}
+		button{
+			border-radius: 10px;
+			padding: 15px 30px;
+			font-size: 0.8rem;
+			text-transform: uppercase;
+			border: none;
+			color: white;
+			background: #006894;
+			box-shadow: 1px 1px 5px 1px #2d3436;
+			margin-top: 20px;
+		}
+		button:hover {
+			background: #1E90FF;
+			color: white;
+		}
+	.button1{
+	background-color: white;
+	color: black;
+	height: 8%;
+	width: 8%;
+	padding: 18px 18px;
+	margin-top: 10px;
+	margin-left: 10px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 6px;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+.button1:hover {
+	background-color: black;
+	color: white;
+}
+	</style>
+</head>
+<body>
+	<a href="Login.html" class="button1">Log out</a>
+<main>
+	
+	<div class="abc">
+		
+		<center><h1>Global Tip Calculator</h1></center>
+		<label>Customer Name</label>
+		<input type="text"  name="cust_name" id="cust_name" required>
+		<br>
+		<label>Bill Amount</label>
+		<input type="number" value=0 name="bill_amount" id="bill_amount" required>
+		<br>
+		<label>Tip Percentage</label>
+		<input type="number" value=0 name="tip_perc" id="tip_perc" required>
+		<br><br>
+		Split Bill : <input type="checkbox" name="sbill" id="sbill" value="Split Bill" onclick="yesnoCheck()">
+		<div id="between"  style="visibility:hidden">
+			<br>
+		Between : <input type="number" id="no" value=2>
+		</div>
+		<label>Tip Amount</label>
+		<input type="text" id="tip_total" disabled="">
+		<br>
+		<label>Total Billed</label>
+		<input type="text" id="total_billed" disabled="">
+		<br>
+		<label>Individual Amount</label>
+		<input type="number" id="ia" disabled="">
+		<br>
+		<button onclick="tipcal()">Calculate</button> &nbsp &nbsp &nbsp &nbsp &nbsp
+		<button onclick="refresh()">Refresh</button>
+	
+	</div>
+</main>
+<script type="text/javascript">
+
+function yesnoCheck() {
+    if (document.getElementById('sbill').checked) {
+        document.getElementById('between').style.visibility = 'visible';
+    }
+    else document.getElementById('between').style.visibility = 'hidden';
+
+}
+	function tipcal() {
+	
+	var name = document.getElementById('cust_name').value;
+	var amount = document.getElementById('bill_amount').value;
+	var perc = document.getElementById('tip_perc').value;
+	var tip = amount * (perc/100);
+	// alert(tip);
+	
+if (name == "") {
+		alert("Customer name should not be kept blank...");
+	}
+	else if(amount <= 0){
+		alert("Bill amount should not be kept blank and also it cannnot take negative values...");
+	}
+	else if (perc <= 0) {
+		alert("Tip Percentage should not be kept blank and also it cannnot take negative values...");
+	}
+	else if (!(/^[a-zA-Z]+$/.test(name))) {
+            alert("Only alphabets are allowed...");
+    }
+	else {
+			 if (document.getElementById('sbill').checked) {
+			 	var bet = document.getElementById('no').value;
+			 	if (bet <= 0) {
+			 		alert("It is should be a positive number...");
+			 	}
+			 	else {
+			 	var total = tip + Number(amount);
+			 	var ans = total/Number(bet);
+			 	document.getElementById('tip_total').value = tip;
+
+			    document.getElementById('total_billed').value = total;
+			    // alert(ans);
+			    document.getElementById('ia').value = ans;
+			        }
+			 }
+		else {
+
+			var total = tip + Number(amount);
+		
+	// alert(total);
+			document.getElementById('tip_total').value = tip;
+
+			document.getElementById('total_billed').value = total;
+			document.getElementById('ia').value = total;
+		}
+	}
+
+} 
+
+function refresh() {
+	document.getElementById('tip_total').value = "";
+	document.getElementById('cust_name').value = "";
+	document.getElementById('total_billed').value = "";
+	document.getElementById('bill_amount').value = 0;
+	document.getElementById('no').value = 2;
+	document.getElementById('tip_perc').value = 0;
+	document.getElementById('ia').value = "";
+	
+}
+
+
+	
+</script>
+</body>
+</html>

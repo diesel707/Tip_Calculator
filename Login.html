@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Login</title>
+<script type="text/javascript">
+	function login() {
+		var uname = document.getElementById('uname').value;
+		var pass = document.getElementById('pwd').value;
+		if(uname=="user") 
+		{
+			if(pass=="user") {
+				// alert("hey");
+				// window.location.href = "C:\Harkesh\Study Details\SICSR\Sem 1\Javascript\Tip Calculator\tip.html";
+				return true;
+			}
+			else {
+				alert("Enter correct password..");
+				return false;
+			}
+		}
+		else {
+			alert("Enter correct username..");
+			return false;
+		}
+	
+	}
+</script>
+
+<style>
+.input1[type=text],.input1[type=password] {
+	width: 70%;
+	padding: 10px 15px;
+	margin: 10px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 4px;
+	box-sizing: border-box;	
+}
+
+.button1{
+	background-color: white;
+	color: black;
+	height: 8%;
+	width: 30%;
+	padding: 18px 20px;
+	margin: 10px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 6px;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+.button1:hover {
+	background-color: black;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+}
+div.ab {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    margin: 100px 500px; 
+    padding: 50px 50px;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+body {
+    background-image:url("calc2.jpg");
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+h1 {
+	color: black;
+}
+</style>
+</head>
+<body>
+
+<form action="tip.html" onsubmit="return login()" align="center">
+<div class="ab">
+<h2><b>GLOBAL TIP CALCULATOR</b></h2>
+<input class="input1" type="text" name="textnames" id="uname"  placeholder="Enter Username">
+<br>
+<input class="input1" type="password" name="password" id="pwd" placeholder="Enter Password">
+<br>
+<input type="submit" value="Login" class="button1"> 
+<a href="Login.html" class="button1">Cancel</a>
+<br><br>
+<a href="#">Forgot Password?</a>
+<br><br>
+<a href="Registration.html">Don't have an account? Wanna Sign Up?</a>
+<br>
+</div>
+</form>
+</body>
+</html>
